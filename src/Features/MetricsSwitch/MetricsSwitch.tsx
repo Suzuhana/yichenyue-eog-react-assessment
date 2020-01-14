@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { actions } from './reducer';
 import { Provider, createClient, useQuery } from 'urql';
 import { IState } from '../../store';
@@ -36,11 +36,12 @@ const animatedSelect = makeAnimated();
 
 const MetricsSwitch = () => {
   const dispatch = useDispatch();
-  const { metrics, activeMetrics } = useSelector(getMetrics);
+  const { metrics, activeMetrics } = useSelector(getMetrics, shallowEqual);
 
   const [result] = useQuery({
     query,
   });
+
   const { data, error } = result;
   useEffect(() => {
     if (error) {
