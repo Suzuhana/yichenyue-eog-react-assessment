@@ -41,7 +41,7 @@ const MetricsSwitch = () => {
   const [result] = useQuery({
     query,
   });
-  const { fetching, data, error } = result;
+  const { data, error } = result;
   useEffect(() => {
     if (error) {
       dispatch(actions.metricsApiErrorReceived({ error: error.message }));
