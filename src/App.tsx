@@ -9,6 +9,8 @@ import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import NowWhat from './components/NowWhat';
 import MetricsSwitch from './Features/MetricsSwitch/MetricsSwitch';
+import { Grid } from '@material-ui/core';
+import RealTimePanel from './Features/RealTimePanel/RealTimePanel';
 
 const store = createStore();
 const theme = createMuiTheme({
@@ -31,8 +33,15 @@ const App = () => (
     <Provider store={store}>
       <Wrapper>
         <Header />
+        <Grid container spacing={10}>
+          <Grid item xs={6}>
+            <RealTimePanel />
+          </Grid>
+          <Grid item xs={6}>
+            <MetricsSwitch />
+          </Grid>
+        </Grid>
         {/* <NowWhat /> */}
-        <MetricsSwitch />
         <ToastContainer />
       </Wrapper>
     </Provider>

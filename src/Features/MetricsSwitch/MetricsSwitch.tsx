@@ -58,11 +58,11 @@ const MetricsSwitch = () => {
       components={animatedSelect}
       isMulti
       options={metrics.map(entry => ({ value: entry, label: entry }))}
-      value={activeMetrics}
+      value={activeMetrics.map(entry => ({ value: entry, label: entry }))}
       onChange={activeOptions => {
         dispatch(
           actions.setActiveMetrics({
-            activeMetrics: activeOptions as string[],
+            activeMetrics: activeOptions ? activeOptions.map((elem: any) => elem.value) : [],
           }),
         );
       }}
