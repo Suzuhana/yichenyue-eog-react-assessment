@@ -123,10 +123,11 @@ const RealTimeChart = () => {
             key={activeMetric}
             yAxisId={metricToUnitMapping[activeMetric]}
             stroke={colorMapping[activeMetric]}
+            unit={metricToUnitMapping[activeMetric]}
           />
         ))}
         <CartesianGrid />
-        <Tooltip />
+        <Tooltip labelFormatter={str => moment(str).format('LLLL')} />
       </LineChart>
     </ResponsiveContainer>
   );
