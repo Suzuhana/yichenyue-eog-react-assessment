@@ -6,8 +6,8 @@ export type ApiErrorAction = {
   error: string;
 };
 
-export type MetricsEntry = {
-  metrics: string;
+export type ActiveMetricEntries = {
+  activeMetrics: string[];
 };
 
 export type IMetricsSwitchState = {
@@ -29,16 +29,9 @@ const slice = createSlice({
       state.metrics = metrics;
     },
     metricsApiErrorReceived: (state, action: PayloadAction<ApiErrorAction>) => state,
-    addMetrics: (state, action: PayloadAction<MetricsEntry>) => {
-      const { metrics } = action.payload;
-      state.activeMetrics.push(metrics);
-    },
-    removeMetrics: (state, action: PayloadAction<MetricsEntry>) => {
-      const { metrics } = action.payload;
-      state.activeMetrics = state.activeMetrics.filter(item => item !== metrics);
-    },
-    removeAllMetrics: state => {
-      state.activeMetrics = [];
+    setActiveMetrics: (state, action: PayloadAction<ActiveMetricEntries>) => {
+      const { activeMetrics } = action.payload;
+      state.activeMetrics = activeMetrics;
     },
   },
 });
