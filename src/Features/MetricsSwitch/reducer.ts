@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from 'redux-starter-kit';
+import * as _ from 'lodash';
+import randomColor from 'randomcolor';
 
 export type MetricsData = string[];
 
@@ -13,11 +15,15 @@ export type ActiveMetricEntries = {
 export type IMetricsSwitchState = {
   metrics: string[];
   activeMetrics: string[];
+  colorMapping: {
+    [metric: string]: string;
+  };
 };
 
 const initialState: IMetricsSwitchState = {
   metrics: [],
   activeMetrics: [],
+  colorMapping: {},
 };
 
 const slice = createSlice({
@@ -26,6 +32,8 @@ const slice = createSlice({
   reducers: {
     metricsDataRecevied: (state, action: PayloadAction<MetricsData>) => {
       const metrics = action.payload;
+      const colorMappingArray = metrics.map(elem => ({ metric: elem, color: randomColor() }));
+      state.colorMapping = _.mapValues(_.keyBy(colorMappingArray, 'metric'), 'color');
       state.metrics = metrics;
     },
     metricsApiErrorReceived: (state, action: PayloadAction<ApiErrorAction>) => state,

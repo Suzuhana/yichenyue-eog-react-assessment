@@ -11,6 +11,7 @@ import NowWhat from './components/NowWhat';
 import MetricsSwitch from './Features/MetricsSwitch/MetricsSwitch';
 import { Grid } from '@material-ui/core';
 import RealTimePanel from './Features/RealTimePanel/RealTimePanel';
+import RealTimeChart from './Features/RealTimeChart/RealTimeChart';
 
 const store = createStore();
 const theme = createMuiTheme({
@@ -41,6 +42,7 @@ const App = () => (
             <MetricsSwitch />
           </Grid>
         </Grid>
+        <RealTimeChart />
         {/* <NowWhat /> */}
         <ToastContainer />
       </Wrapper>

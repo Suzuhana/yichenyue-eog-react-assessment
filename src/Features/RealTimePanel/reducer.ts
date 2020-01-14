@@ -7,7 +7,7 @@ export type ApiErrorAction = {
 export type IMeasurement = {
   metric: string;
   at: number;
-  value: string;
+  value: number;
   unit: string;
 };
 

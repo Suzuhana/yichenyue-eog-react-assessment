@@ -5,15 +5,16 @@ import { Provider, createClient, useQuery } from 'urql';
 import { IState } from '../../store';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import gql from 'graphql-tag';
 
 const client = createClient({
   url: 'https://react.eogresources.com/graphql',
 });
 
-const query = `
-    {
-        getMetrics
-    }
+const query = gql`
+  {
+    getMetrics
+  }
 `;
 
 const getMetrics = (state: IState) => {
