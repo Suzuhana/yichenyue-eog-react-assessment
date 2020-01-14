@@ -1,21 +1,10 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { actions } from './reducer';
 import { Provider, createClient, useQuery } from 'urql';
 import { IState } from '../../store';
 import gql from 'graphql-tag';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  ReferenceLine,
-  Area,
-} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import moment from 'moment';
 
 const client = createClient({
@@ -49,7 +38,7 @@ const RealTimeChart = () => {
     if (measurements[0] === undefined) {
       return [];
     }
-    let length = measurements[0].length;
+    let length = Math.min(...measurements.map(elem => elem.length));
     const res = [];
 
     for (let i = 0; i < length; i++) {
@@ -101,6 +90,10 @@ const RealTimeChart = () => {
     const { getMultipleMeasurements } = data;
     dispatch(actions.measurementsDataReceived(getMultipleMeasurements));
   }, [dispatch, data, error]);
+
+  if (activeMetrics.length === 0) {
+    return null;
+  }
 
   return (
     <ResponsiveContainer width="90%" height="65%">

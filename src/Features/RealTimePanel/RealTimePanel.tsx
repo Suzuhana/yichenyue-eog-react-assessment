@@ -3,6 +3,7 @@ import { CardContent, Typography, Grid } from '@material-ui/core';
 import { Provider, subscriptionExchange, createClient, defaultExchanges, useSubscription } from 'urql';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { actions } from './reducer';
+// import { actions as realTimeChartActions } from '../RealTimeChart/reducer';
 import gql from 'graphql-tag';
 import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../store';
