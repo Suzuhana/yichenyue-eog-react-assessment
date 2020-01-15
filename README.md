@@ -6,6 +6,8 @@ The chart Libray [Recharts](http://recharts.org/en-US/) used in this project is 
 Since the time is kind of limited for me so I didn't try other Chart Libs
 the chart is just staic plotting data retrieved from endpoint.
 
+also didn't have time for making [snackbar error message](https://material-ui.com/components/snackbars/#snackbar)
+
 This assessment was bespoke handcrafted for yichenyue.
 
 Read more about this assessment [here](https://react.eogresources.com)
